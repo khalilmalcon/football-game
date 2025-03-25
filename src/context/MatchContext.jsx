@@ -36,21 +36,21 @@ export const MatchProvider = ({ children }) => {
     setMatchStats((prevStats) => {
       
       // Validar si la estadística existe en matchStats
-      if (!(stat in prevStats)) {
+      if (!Object.hasOwn(prevStats, stat)) {
         console.error(`Error: Estadística '${stat}' no es válida.`);
         return prevStats;
       }
 
       // Validar si el equipo es válido
-      if (!(team in prevStats[stat])) {
+      if (!Object.hasOwn(prevStats[stat], team)) {
         console.error(`Error: Equipo inválido en '${stat}': ${team}`);
         return prevStats;
       }
   
       // Asegurar que el valor no sea undefined antes de sumarlo
       const updatedStat = {
-        ...prevStats[stat],
-        [team]: (prevStats[stat][team] ?? 0) + value, // Si es undefined, usar 0
+        ...prevStats?.[stat],
+        [team]: (prevStats?.[stat]?.[team] ?? 0) + value,
       };
   
       return {
@@ -63,34 +63,34 @@ export const MatchProvider = ({ children }) => {
   // Función para actualizar los eventos
   const updateEvents = (newEvents) => {
     setEvents((prevEvents) => 
-      typeof newEvents === "function" ? newEvents(prevEvents) : newEvents
+      newEvents instanceof Function ? newEvents(prevEvents) : newEvents
     );
   };
 
   // Función para actualizar el marcador
   const updateScore = (updateFn) => {
     setScoreA((prevA) => {
-      const newScores = typeof updateFn === "function" ? updateFn([prevA, scoreB]) : updateFn;
+      const newScores = updateFn instanceof Function ? updateFn([prevA, scoreB]) : updateFn;
       if (!Array.isArray(newScores)) {
-        console.error("updateScore expected an array but received:", newScores);
+        console.error("Error: updateScore espera un array pero recibió:", newScores);
         return prevA;
       }
       return newScores[0];
     });
   
     setScoreB((prevB) => {
-      const newScores = typeof updateFn === "function" ? updateFn([scoreA, prevB]) : updateFn;
+      const newScores = updateFn instanceof Function ? updateFn([scoreA, prevB]) : updateFn;
       if (!Array.isArray(newScores)) {
-        console.error("updateScore expected an array but received:", newScores);
+        console.error("Error: updateScore espera un array pero recibió:", newScores);
         return prevB;
       }
       return newScores[1];
     });
-  };  
+  };
 
   // Función para actualizar el tiempo de partido
   const updateTime = (newTime) => {
-    setCurrentTime((prevTime) => (typeof newTime === "function" ? newTime(prevTime) : newTime));
+    setCurrentTime((prevTime) => (newTime instanceof Function ? newTime(prevTime) : newTime));
   };
 
   return (

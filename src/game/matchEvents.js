@@ -161,7 +161,7 @@ export const eventDescriptions = {
   "tiro al poste": (team) => `¡El disparo de ${team} pega en el poste y sigue en juego!`,
   "parada del portero": (team) => `¡El arquero de ${team} hace una atajada espectacular!`,
   "saque de meta": (team) => `El arquero de ${team} pondrá el balón en juego desde el área.`,
-  "corner": (team) => `La pelota rebota y y es cornr a favor de ${team}!`,
+  "corner": (team) => `La pelota rebota y y es corner a favor de ${team}!`,
   "pérdida de balón": (team) => `¡${team} pierde el balón!`,
   "contraataque": (team) => `¡Rápido contraataque de ${team}!`,
   "rebote": (team) => `El balón queda suelto tras el impacto, ${team} busca recuperarlo.`,
@@ -173,7 +173,7 @@ export const eventDescriptions = {
   "tarjeta roja": (team) => `¡Tarjeta roja directa para un jugador de ${team}!`,
   "expulsión": (team) => `¡${team} se queda con un jugador menos tras la expulsión!`,
   "continuación del juego": () => `El partido sigue con normalidad.`,
-  
+
   "penalti": (team) => `¡Penalti para ${team}!`,
   "penalti fallado": (team) => `¡Increíble! El penalti de ${team} se ha ido desviado.`,
   "penalti atajado": (team) => `¡Gran parada del portero de ${team} en el penalti!`,

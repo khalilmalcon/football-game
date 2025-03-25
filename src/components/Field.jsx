@@ -56,35 +56,27 @@ function Field() {
 
     useEffect(() => {
 
-        // Posiciona los jugadores del equipo A
-        teamA.players.forEach((player, index) => {
-            const playerElement = playerARefs.current[index];
-
-            if (playerElement) {
-                playerElement.style.left = `${player.x}%`;
-                playerElement.style.top = `${player.y}%`;
-            }
-        });
-
-        // Posiciona los jugadores del equipo B
-        teamB.players.forEach((player, index) => {
-            const playerElement = playerBRefs.current[index];
-
-            if(playerElement) {
-                playerElement.style.left = `${player.x}%`;
-                playerElement.style.top = `${player.y}%`;
-            }
-        });
-
         // Posiciona la pelota en el centro de la cancha
-        if (ballRef.current) {
-            ballRef.current.style.left = '50%';
-            ballRef.current.style.top = '50%';
-        }
-
+        gsap.set(ballRef.current, { left: "50%", top: "50%" });
+      
+        // Posiciona los jugadores del Equipo A
+        teamA.players.forEach((player, index) => {
+            gsap.set(playerARefs.current[index], { 
+                left: `${player.x}%`, 
+                top: `${player.y}%` 
+            });
+        });
+      
+        // Posiciona los jugadores del Equipo B
+        teamB.players.forEach((player, index) => {
+            gsap.set(playerBRefs.current[index], { 
+                left: `${player.x}%`, 
+                top: `${player.y}%` 
+            });
+        });
+      
         handlePlayerAction();
-
-    },[]);
+      }, []);
 
     return (
         <>
