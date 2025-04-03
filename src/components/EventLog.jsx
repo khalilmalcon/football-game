@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { useMatch } from "../context/MatchContext";
+import useMatchStore from "../game/matchStore";
 import { gsap } from "gsap";
 
 const EventLog = () => {
   
-  const { matchId, events } = useMatch();
+  const { matchId, events } = useMatchStore();
 
   const eventListRef = useRef(null);
   const lastEventRef = useRef(null);

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useMatch } from "../context/MatchContext";
+import useMatchStore from "../game/matchStore";
 import { useMatchEngine } from "../game/matchEngine";
 
 const MatchModal = () => {
 
-  const { modal, setModal, matchStats, running, paused } = useMatch();
+  const { modal, setModal, matchStats, running, paused } = useMatchStore();
   const { startMatch } = useMatchEngine(); // Obtener la función para reanudar
   const modalRef = useRef(null);
   const overlayRef = useRef(null);

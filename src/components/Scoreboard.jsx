@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { teamA, teamB } from "../game/matchTeams";
-import { useMatch } from "../context/MatchContext";
+import useMatchStore from "../game/matchStore";
 
 function Scoreboard() {
-  const { scoreA = 0, scoreB = 0, currentTime = 0, matchStatus = "Partido" } = useMatch();
+
+  const { scoreA = 0, scoreB = 0, currentTime = 0, matchStatus = "Partido" } = useMatchStore();
 
   const scoreARef = useRef(null);
   const scoreBRef = useRef(null);

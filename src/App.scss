@@ -51,6 +51,7 @@ button {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
 
   @media screen and (max-width: 500px) {
     padding: 1rem;

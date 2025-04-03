@@ -1,6 +1,6 @@
 import { teamA, teamB } from "./matchTeams";
 import { eventFlow, eventDescriptions } from "./matchEvents";
-import { useMatch } from "../context/MatchContext";
+import useMatchStore from "./matchStore";
 
 // Función para establecer la posesión del balón
 function setPossession(team) {
@@ -38,7 +38,7 @@ let currentPossession = teamA; // El Equipo A inicia con la posesión del balón
 let team = "teamA";
 
 export const useMatchEngine = () => {
-  const { updateEvents, updateScore, setRunning, setPaused, setCurrentTime, setMatchStatus, setModal, updateStats } = useMatch();
+  const { updateEvents, updateScore, setRunning, setPaused, setCurrentTime, setMatchStatus, setModal, updateStats } = useMatchStore();
 
   const startMatch = () => {
 

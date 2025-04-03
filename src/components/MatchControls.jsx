@@ -1,10 +1,10 @@
 import React from "react";
-import { useMatch } from "../context/MatchContext";
 import { useMatchEngine } from "../game/matchEngine";
+import useMatchStore from "../game/matchStore";
 
 const MatchControls = () => {
     
-  const { running, paused } = useMatch();
+  const { running, paused } = useMatchStore();
   const { startMatch, pauseMatch } = useMatchEngine();
 
   return (
